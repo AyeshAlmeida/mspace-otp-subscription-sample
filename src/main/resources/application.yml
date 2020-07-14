@@ -1,0 +1,19 @@
+server:
+  port: 10010
+  servlet:
+    context-path: "/api-server"
+spring:
+  datasource:
+    url: "jdbc:mysql://127.0.0.1:3307/consumer_app_db?autoReconnect=true&allowPublicKeyRetrieval=true&useSSL=false"
+    data-username: "db_user"
+    data-password: "password_123#"
+    driver-class-name: "com.mysql.cj.jdbc.Driver"
+  jpa:
+    database-platform: "org.hibernate.dialect.MySQL8Dialect"
+    hibernate:
+      ddl-auto: "update"
+platform:
+  app-id: "APP_000000"
+  password: "password"
+  connector:
+    url: "http://localhost:6000"
