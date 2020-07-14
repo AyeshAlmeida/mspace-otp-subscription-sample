@@ -23,7 +23,7 @@ public class OtpFlowController {
         return service.sendOtp(deviceId, request);
     }
 
-    @RequestMapping(value = "/request", method = RequestMethod.POST)
+    @RequestMapping(value = "/verify", method = RequestMethod.POST)
     public VerifyOtpResponse verifyOtp(@RequestHeader("device.id") String deviceId,
                                        @RequestBody VerifyOtpRequest request) {
         return service.verifyOtp(deviceId, request);
