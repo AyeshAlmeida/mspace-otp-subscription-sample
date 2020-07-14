@@ -16,4 +16,4 @@ platform:
   app-id: "APP_000000"
   password: "password"
   connector:
-    url: "http://localhost:6000"
+    url: "http://localhost:7000"

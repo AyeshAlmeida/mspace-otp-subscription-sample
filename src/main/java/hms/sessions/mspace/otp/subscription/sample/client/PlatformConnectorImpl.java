@@ -20,7 +20,7 @@ public class PlatformConnectorImpl implements PlatformConnector {
     private final RestTemplate requestSender;
 
     @Value("${platform.connector.url}")
-    private String baseUrl = "http://localhost:6000";
+    private String baseUrl = "http://localhost:7000";
 
     @Autowired
     public PlatformConnectorImpl(RestTemplate template) {
