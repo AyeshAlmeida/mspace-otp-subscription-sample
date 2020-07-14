@@ -1,10 +1,12 @@
 package hms.sessions.mspace.otp.subscription.sample.repository;
 
 import hms.sessions.mspace.otp.subscription.sample.repository.domain.AppSubscription;
+import org.springframework.data.jpa.repository.Modifying;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.CrudRepository;
 import org.springframework.data.repository.query.Param;
 import org.springframework.stereotype.Repository;
+import org.springframework.transaction.annotation.Transactional;
 
 import java.util.Optional;
 
@@ -13,5 +15,7 @@ public interface SubscriptionRepository extends CrudRepository<AppSubscription, 
     Optional<AppSubscription> findByDeviceId(String deviceId);
 
     @Query("UPDATE AppSubscription sub SET sub.isSubscribed = :isSubscribed, sub.maskedMsisdn = :maskedMsisdn where sub.deviceId = :deviceId")
+    @Modifying
+    @Transactional
     void updateByDeviceId(@Param("deviceId") String deviceId, @Param("isSubscribed") boolean isSubscribed, @Param("maskedMsisdn") String maskedMsisdn);
 }

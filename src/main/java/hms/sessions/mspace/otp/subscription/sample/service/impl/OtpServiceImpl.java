@@ -12,6 +12,8 @@ import hms.sessions.mspace.otp.subscription.sample.messages.VerifyOtpResponse;
 import hms.sessions.mspace.otp.subscription.sample.repository.SubscriptionRepository;
 import hms.sessions.mspace.otp.subscription.sample.repository.domain.AppSubscription;
 import hms.sessions.mspace.otp.subscription.sample.service.OtpService;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Service;
@@ -20,6 +22,8 @@ import java.util.Optional;
 
 @Service
 public class OtpServiceImpl implements OtpService {
+    private static final Logger LOGGER = LoggerFactory.getLogger(OtpServiceImpl.class);
+
     private final PlatformConnector connector;
     private final SubscriptionRepository repository;
 
@@ -96,7 +100,11 @@ public class OtpServiceImpl implements OtpService {
 
                 PlatformVerifyOtpResponse platformResponse = connector.verifyOtp(platformRequest);
 
-                updateSubscription(deviceId, platformResponse);
+                try {
+                    updateSubscription(deviceId, platformResponse);
+                } catch (Exception e) {
+                    LOGGER.error("Error occurred while updating subscription ", e);
+                }
 
                 return getVerifyOtpResponse(platformResponse);
             } else {

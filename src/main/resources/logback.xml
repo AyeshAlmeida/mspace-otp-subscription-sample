@@ -71,7 +71,7 @@
         </encoder>
     </appender>
 
-    <logger name="org.springframework" level="ERROR" additivity="true">
+    <logger name="org.springframework" level="DEBUG" additivity="true">
         <appender-ref ref="debug-appender"/>
     </logger>
 

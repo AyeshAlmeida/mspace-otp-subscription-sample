@@ -8,7 +8,7 @@ import hms.sessions.mspace.otp.subscription.sample.service.OtpService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
-@RestController("/otp")
+@RestController(value = "/otp")
 public class OtpFlowController {
     private final OtpService service;
 
